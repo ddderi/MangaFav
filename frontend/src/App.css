@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+
+.mangacont{
+  display: grid;
+  grid-template-columns: auto auto;
+  padding-top: 2%;
+  padding-left: 7%;
+  padding-right: 7%;
+  column-gap: 2%;
+  row-gap: 7%;
+}
+
+.manga{
+  border: solid black 1px;
+  border-radius: 20px 20px;
+  background-color: rgb(241, 241, 241);
+  padding-bottom: 2%;
+}
+
+.header{
+  background-color: beige;
+  margin-bottom: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding-bottom: 1%;
+}
+
+.main{
+  background-color: beige;
+  height: 600px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
