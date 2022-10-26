@@ -38,6 +38,20 @@ const dataMapperManga = {
         }catch(error){
             console.log(error)
         }
+    },
+    updateManga: async function(name, description, id){
+        try{
+            const query = {
+                text: `UPDATE "mangas"
+                SET "name" = $1, "description" = $2
+                WHERE "id" = $3`,
+                values: [name, description, id]
+            };
+            const result = await db.query(query);
+            return result.rows
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 
