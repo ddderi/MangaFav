@@ -2,14 +2,12 @@ const dataMapperManga = require('../dataMappers/mangaDataMappers')
 
 
 const mangaController = {
-    test: async function(req, res) {
-        res.send('every thing is working')
-    },
     addManga: async function(req, res){
         try{
             const { name, description } = req.body;
 
             //validation a faire 
+
 
             const newmanga = await dataMapperManga.addMangas(name, description);
             res.json(newmanga)
