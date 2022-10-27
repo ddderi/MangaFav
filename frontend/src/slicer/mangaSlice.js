@@ -7,9 +7,10 @@ const initialState = {
     mangas: []
 }
 
-export const updateManga = createAsyncThunk("mangas/updateManga", async(id, {rejectWithValue}) =>{
+export const updateManga = createAsyncThunk("mangas/updateManga", async(manga, {rejectWithValue}) =>{
     try{
-        const result = await axios.put(baseURL + `/manga/` + id)
+        const { name, description, id } = manga
+        const result = await axios.put(baseURL + `/manga/` + id, {name, description})
         return result.data
     }catch(error){
         console.log(error)
@@ -44,7 +45,8 @@ export const postManga = createAsyncThunk(
     "mangas/postManga", 
     async(manga, {rejectWithValue}) => {
     try{
-        const result = await axios.post(baseURL + "/manga", manga)
+        const { name, description} = manga
+        const result = await axios.post(baseURL + "/manga", {name, description})
         return result.data
     }catch(error){
         console.log(error)
@@ -129,8 +131,12 @@ const mangaSlice = createSlice({
             }
         },
         [updateManga.fulfilled]: (state,action) => {
+            console.log(action)
+            const updatedManga = state.mangas.map((manga) => manga.id === action.meta.arg.id ? 
+            action.meta.arg : manga)
+
             return {
-                ...state
+                ...state, mangas: updatedManga
             }
             
         },

@@ -1,19 +1,27 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { postManga } from '../slicer/mangaSlice';
+import { postManga, updateManga } from '../slicer/mangaSlice';
 import { useForm } from 'react-hook-form';
 import { useDispatch} from "react-redux";
 
 
-function MangaInput({queryapi}){
+function MangaInput({manga}){
 
 const { register, handleSubmit, reset } = useForm()
+
+
 const dispatch = useDispatch()
+
+
 
     return (
         <div>
         <form onSubmit={handleSubmit((data) => {
-            dispatch(queryapi(data))
+            if(manga !== undefined){
+                dispatch(updateManga({name: data.name, description: data.description, id: manga.id}))
+            }else{
+                dispatch(postManga(data))
+            }
             reset()
         })}>
             <label htmlFor='name' >manga name : </label><br></br>
