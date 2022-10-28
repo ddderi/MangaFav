@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MangaInput from './MangaInput';
 
 
-function Manga({ manga, upvoteManga, handleDelete, downvoteManga }) {
+function Manga({ manga, upvoteManga, handleDelete, handleUpvotingManga }) {
     
 const [showinput, setShowinput] = useState(false)
 
@@ -16,14 +16,15 @@ const showForm = () => {
     <div className='manga'>
             <h5>{manga.name}</h5>
             <p>{manga.description}</p>
+            <p>{manga.votes}</p>
         <div className="buttonbot">
           <button onClick={() => showForm()}>Update manga</button>
               {showinput && (
               <MangaInput manga={manga}/>
               )}
             <button onClick={() =>{handleDelete(manga.id)}} >X</button>
-            <button onClick={() => {upvoteManga(manga.id)}} >upvote</button>
-            <button onClick={() => {downvoteManga(manga.id)}} >downvote</button> 
+            <button onClick={() => {handleUpvotingManga(manga.id)}} >upvote</button>
+            <button onClick={() => {console.log(manga.id)}} >downvote</button> 
          </div>
 
     </div>

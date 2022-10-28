@@ -42,6 +42,15 @@ const mangaController = {
         }catch(error){
             return res.status(500).json({ error })
         }
+    },
+    upvoteManga: async function(req, res){
+        try{
+            const { id } = req.params 
+            const manga = await dataMapperManga.upvoteManga(id)
+            res.json(manga)
+        }catch(error){
+            return res.status(500).json({ errror })
+        }
     }
 }
 

@@ -7,5 +7,6 @@ router.post('/manga', mangaController.addManga)
 router.get('/mangas', mangaController.indexM)
 router.delete('/mangas/:id', mangaController.deleteManga)
 router.put('/manga/:id', mangaController.updateManga)
+router.patch('/manga/:id', mangaController.upvoteManga)
 
 module.exports = router;

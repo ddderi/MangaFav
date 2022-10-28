@@ -4,7 +4,7 @@ import Manga from '../components/Manga';
 
 //redux 
 
-import { removeManga, upvoteManga, downvoteManga, getMangas, deleteManga } from '../slicer/mangaSlice'
+import { removeManga, upvoteManga, downvoteManga, getMangas, deleteManga, upvotingManga } from '../slicer/mangaSlice'
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -24,12 +24,16 @@ function Mangas() {
     dispatch(deleteManga(id))
   }
 
+  const handleUpvotingManga = (id) => {
+    dispatch(upvotingManga(id))
+  }
+
   return (
     <>
-
-      {mangas ?
+      {console.log(mangas)}
+      {mangas.length>0 ?
         <div className='mangacont'>
-          {mangas.map((manga, index) => { return <Manga handleDelete={handleDelete} key={index} deleteManga={deleteManga} upvoteManga={upvoteManga} downvoteManga={downvoteManga} removeManga={removeManga} manga={manga} /> })}
+          {mangas.map((manga, index) => { return <Manga handleDelete={handleDelete} key={index} handleUpvotingManga={handleUpvotingManga} manga={manga} /> })}
         </div>
         : <h2>You don't fav any manga</h2>}
     </>
