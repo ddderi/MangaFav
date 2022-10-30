@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import { connect } from 'react-redux';
 import Manga from '../components/Manga';
 
@@ -14,6 +14,8 @@ function Mangas() {
   const dispatch = useDispatch()
   const mangaState = useSelector(state => state.mangas)
   const mangas = mangaState.mangas
+
+const [manga, setManga] = useState([])
 
 
   useEffect(() => {

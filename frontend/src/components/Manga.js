@@ -23,7 +23,7 @@ const showForm = () => {
               <MangaInput manga={manga}/>
               )}
             <button onClick={() =>{handleDelete(manga.id)}} >X</button>
-            <button onClick={() => {handleUpvotingManga(manga.id)}} >upvote</button>
+            <button onClick={() => {handleUpvotingManga(manga)}} >upvote</button>
             <button onClick={() => {console.log(manga.id)}} >downvote</button> 
          </div>
 

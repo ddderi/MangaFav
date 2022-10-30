@@ -20,8 +20,10 @@ export const updateManga = createAsyncThunk("mangas/updateManga", async(manga, {
 
 
 export const upvotingManga = createAsyncThunk("mangas/upvotingManga", 
-async(id, {rejectWithValue}) =>{
+async(manga, {rejectWithValue}) =>{
     try{
+        const { name, description, id } = manga
+        console.log(id)
         const result = await axios.patch(baseURL + `/manga/` + id)
         return result.data
     }catch(error){
@@ -141,7 +143,7 @@ const mangaSlice = createSlice({
             }
         },
         [updateManga.fulfilled]: (state,action) => {
-            
+            console.log(action)
             const updatedManga = state.mangas.map((manga) => manga.id === action.meta.arg.id ? 
             action.meta.arg : manga)
 
@@ -161,14 +163,14 @@ const mangaSlice = createSlice({
             }
         },
         [upvotingManga.fulfilled]: (state,action) => {
-           
-            const updatedManga = state.mangas.map((manga) => manga.id === action.meta.arg ? 
-            manga.votes  : manga)
+           console.log(action)
+            const updatedManga = state.mangas.map((manga) => manga.id === action.meta.arg.id ? 
+            action.meta.arg : manga)
             
 
             
             return {
-                ...state
+                ...state, mangas: updatedManga
         }
             
         },

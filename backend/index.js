@@ -3,12 +3,15 @@ const app = express();
 const router = require('./app/router');
 const cors = require('cors');
 
+// const admin = require("firebase-admin")
+// const credentials = require("./testfirebase.json")
 
-//MIDDLEWARE
 app.use(express.json())
 app.use(express.urlencoded({ extended: false}))
 
-//cors 
+// const adminInit = admin.initializeApp({
+//     credential: admin.credential.cert(credentials)
+// })
 
 app.use(cors({
     origin: '*'
@@ -16,14 +19,10 @@ app.use(cors({
 
 
 
-// PORT 
 const PORT = process.env.PORT || 1234;
-
-// ROUTER
 app.use(router)
 
 
-//LISTEN
 app.listen(PORT, () => {
     console.log(`server is running at http://localhost:${PORT}`)
 })
