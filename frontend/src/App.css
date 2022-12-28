@@ -1,44 +1,29 @@
 .App {
   text-align: center;
+  background: url('../src/styles/images/shutterstock_1192119628.jpg') no-repeat center center fixed;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.ui.card{
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img {
+  max-width: 290px;
+  max-height: 200px
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+
+
+div.ui.card {
+  margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 
 .mangacont{
+  
   display: grid;
   grid-template-columns: auto auto;
   padding-top: 2%;
@@ -51,12 +36,12 @@
 .manga{
   border: solid black 1px;
   border-radius: 20px 20px;
-  background-color: rgb(241, 241, 241);
+  background-color: rgba(241, 241, 241);
   padding-bottom: 2%;
 }
 
 .header{
-  background-color: beige;
+  background-color: rgba(245, 245, 220, 0.6);
   margin-bottom: 2%;
   margin-left: 2%;
   margin-right: 2%;
@@ -64,7 +49,7 @@
 }
 
 .main{
-  background-color: beige;
+  background-color: rgba(245, 245, 220, 0.6);
   height: 600px;
   margin-left: 2%;
   margin-right: 2%;

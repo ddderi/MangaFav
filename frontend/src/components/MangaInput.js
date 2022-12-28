@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 // dispatch est utiliser pour appeler la function post create async thunk
 // use selector est utiliser pour aller le state manga 
 import { useDispatch, useSelector } from "react-redux";
-
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 // class MangaInput extends Component {
 
@@ -58,19 +58,27 @@ const dispatch = useDispatch()
 
   
     return (
-        <div>
-        <form onSubmit={handleSubmit((data) => {
-            // console.log(data)
-            dispatch(postManga(data))
-            reset()
-        })}>   
-            <label htmlFor='name' >manga name : </label><br></br>
-            <input {...register('name')} type='text' required={true} minLength={2} /><br></br>
-            <label htmlFor='description' >manga description : </label><br></br>
-            <input {...register('description')} type='text' required={true} minLength={2} /><br></br>
-            <button type='submit' >Submit your manga</button>
-        </form>
-    </div>
+        <div style={{width: '30%', margin: 'auto'}} >
+    <Form onSubmit={handleSubmit((data) => {
+        // console.log(data)
+        dispatch(postManga(data))
+        reset()
+    })}>
+    <Form.Field>
+    <label htmlFor='name' >Manga name : </label>
+    <input {...register('name')} type='text' required={true} minLength={2} />
+    </Form.Field>
+    <Form.Field>
+    <label htmlFor='description' >Manga description : </label>
+    <input {...register('description')} type='text' required={true} minLength={2} />
+    </Form.Field>
+    <Form.Field>
+    <label htmlFor='image' >Manga image : </label>
+    <input {...register('image')} type='text' required={true} />
+    </Form.Field>
+    <Button type='submit' >Submit your manga</Button>
+  </Form>
+  </div>
   )
 
 }
@@ -79,7 +87,7 @@ const dispatch = useDispatch()
 
 
 
-export default connect(null, { addManga })(MangaInput)
+export default MangaInput
 
 
 
